@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeRunner - Editor</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="editor-page">
+
+<!-- Top bar with the app name, the logged-in user and the logout button -->
+<header class="topbar">
+    <div class="topbar-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span>CodeRunner</span>
+    </div>
+    <div class="topbar-user">
+        <span>Hello, <strong id="userName"></strong></span>
+        <button id="logoutBtn" class="ghost-btn" type="button">Logout</button>
+    </div>
+</header>
+
+<main class="workspace">
+
+    <!-- Left side: toolbar, code editor and input box -->
+    <section class="editor-pane">
+        <div class="toolbar">
+            <select id="language">
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="cpp">C++</option>
+                <option value="c">C</option>
+                <option value="javascript">JavaScript</option>
+            </select>
+            <div class="toolbar-actions">
+                <button id="runBtn" class="run-btn" type="button">&#9654; Run</button>
+                <button id="aiBtn" class="secondary-btn" type="button">AI Explain</button>
+                <button id="saveBtn" class="secondary-btn" type="button">Save</button>
+            </div>
+        </div>
+
+        <textarea id="code" class="code-area" spellcheck="false"></textarea>
+
+        <label class="field-label" for="stdin">Input (stdin)</label>
+        <textarea id="stdin" class="stdin-area" spellcheck="false" placeholder="Optional input for your program"></textarea>
+    </section>
+
+    <!-- Right side: output, AI answer, history and saved programs -->
+    <section class="side-pane">
+        <div class="side-tabs">
+            <button class="side-tab active" data-tab="output" type="button">Output</button>
+            <button class="side-tab" data-tab="ai" type="button">AI Help</button>
+            <button class="side-tab" data-tab="history" type="button">History</button>
+            <button class="side-tab" data-tab="saved" type="button">Saved</button>
+        </div>
+
+        <div id="panel-output" class="panel">
+            <div id="statusBadge" class="status-badge hidden"></div>
+            <pre id="outputBox" class="result-box">Run your code to see the output here.</pre>
+            <pre id="errorBox" class="result-box error-box hidden"></pre>
+            <p id="statsBox" class="stats"></p>
+        </div>
+
+        <div id="panel-ai" class="panel hidden">
+            <pre id="aiBox" class="result-box">Click "AI Explain" to get an explanation, error analysis and suggestions.</pre>
+        </div>
+
+        <div id="panel-history" class="panel hidden">
+            <div id="historyList" class="item-list"></div>
+        </div>
+
+        <div id="panel-saved" class="panel hidden">
+            <div id="savedList" class="item-list"></div>
+        </div>
+    </section>
+</main>
+
+<p id="toast" class="toast hidden"></p>
+
+<script src="js/editor.js"></script>
+
+<!--
+Purpose: editor.html is the main page where a logged-in user writes and runs code.
+How it works: the layout has an editor on the left and result tabs on the right.
+editor.js connects every button to the backend with the Fetch API.
+-->
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Compiler - Sign in</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+<!-- Left side: branding and feature highlights -->
+<section class="brand-panel">
+    <div class="brand-logo">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span>CodeRunner</span>
+    </div>
+
+    <h2>Write, run and debug code in your browser</h2>
+    <p class="brand-text">No installation needed. Run your code instantly and get AI help to understand and fix it.</p>
+
+    <!-- Decorative code preview -->
+    <div class="code-preview">
+        <div class="code-dots"><span></span><span></span><span></span></div>
+        <pre><span class="kw">public class</span> <span class="ty">Main</span> {
+    <span class="kw">public static void</span> main(String[] args) {
+        System.out.println(<span class="st">"Hello, World!"</span>);
+    }
+}</pre>
+        <div class="code-output">&gt; Hello, World!</div>
+    </div>
+
+    <ul class="feature-list">
+        <li>Run Java, Python, C, C++ and JavaScript</li>
+        <li>AI explains errors and suggests fixes</li>
+        <li>Save your programs and view your history</li>
+    </ul>
+</section>
+
+<!-- Right side: login and register forms -->
+<section class="form-panel">
+    <div class="auth-card">
+        <h1>Welcome</h1>
+        <p class="subtitle">Sign in to continue, or create a new account</p>
+
+        <!-- Tabs to switch between login and register -->
+        <div class="tabs">
+            <button id="loginTab" class="tab active" type="button">Login</button>
+            <button id="registerTab" class="tab" type="button">Register</button>
+        </div>
+
+        <!-- Login form -->
+        <div id="loginForm">
+            <label class="field-label" for="loginUsername">Username</label>
+            <input id="loginUsername" type="text" placeholder="Enter your username" autocomplete="username">
+
+            <label class="field-label" for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" placeholder="Enter your password" autocomplete="current-password">
+
+            <button id="loginBtn" class="primary-btn" type="button">Login</button>
+        </div>
+
+        <!-- Register form, hidden until the Register tab is clicked -->
+        <div id="registerForm" class="hidden">
+            <label class="field-label" for="regUsername">Username</label>
+            <input id="regUsername" type="text" placeholder="Choose a username" autocomplete="username">
+
+            <label class="field-label" for="regEmail">Email</label>
+            <input id="regEmail" type="email" placeholder="you@example.com" autocomplete="email">
+
+            <label class="field-label" for="regPassword">Password</label>
+            <input id="regPassword" type="password" placeholder="At least 8 characters" autocomplete="new-password">
+
+            <button id="registerBtn" class="primary-btn" type="button">Create account</button>
+        </div>
+
+        <!-- Shows success and error messages from the backend -->
+        <p id="message" class="message"></p>
+    </div>
+</section>
+
+<script src="js/auth.js"></script>
+
+<!--
+Purpose: index.html is the first page. It lets a user register or log in.
+How it works: the page has two forms and a message area. auth.js switches the tabs,
+sends the data to /api/auth/login or /api/auth/register, and shows the result.
+-->
+</body>
+</html>
